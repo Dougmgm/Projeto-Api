@@ -44,5 +44,28 @@ namespace Projeto_API.Repository
             return vendedor;
         }
 
+        public Cliente AtualizarCliente(Cliente cliente)
+        {
+            _context.Clientes.Update(cliente);
+            _context.SaveChanges();
+            return cliente;
+        }
+
+        public void DeletarCliente(Cliente cliente)
+        {
+            _context.Clientes.Remove(cliente);
+            _context.SaveChanges();
+        }
+
+        public void AtualizarSenha(Cliente cliente, AtualizarSenhaClienteDTO dto)
+        {
+            cliente.Senha = dto.Senha;
+            AtualizarCliente(cliente);
+        }
+
+        /*public Cliente Listar(){
+            List<string> lista = new List<string>();
+            return lista
+        }*/
     }
 }

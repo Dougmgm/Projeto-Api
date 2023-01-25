@@ -36,12 +36,38 @@ namespace Projeto_API.Repository
             return vendedor;
         }
 
+       /* public List<ObterVendedorDTO> ObterLista(int id)
+        {
+            var vendedor = ObterLista().ToList(vendedor)
+            return vendedor;
+        }*/
+
+
         public List<ObterVendedorDTO> ObterPorLogin(string login)
         {
             var vendedor = _context.Vendedores.Where(x => x.Login.Contains(login))
                                               .Select(x => new ObterVendedorDTO (x))
                                               .ToList();
             return vendedor;
+        }
+
+        public Vendedor AtualizarVendedor(Vendedor vendedor)
+        {
+            _context.Vendedores.Update(vendedor);
+            _context.SaveChanges();
+            return vendedor;
+        }
+
+        public void DeletarVendedor(Vendedor vendedor)
+        {
+            _context.Vendedores.Remove(vendedor);
+            _context.SaveChanges();
+        }
+
+        public void AtualizarSenha(Vendedor vendedor, AtualizarSenhaVendedorDTO dto)
+        {
+            vendedor.Senha = dto.Senha;
+            AtualizarVendedor(vendedor);
         }
     }
 }

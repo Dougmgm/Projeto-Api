@@ -2,13 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using Projeto_API.Context;
 using Projeto_API.Dto;
 using Projeto_API.Models;
 
 namespace Projeto_API.Repository
 {
-    public class PedidoRepository
+    public class PedidoRepository 
     {
         private readonly VendasContext _context;
         public PedidoRepository(VendasContext context)
@@ -16,34 +17,44 @@ namespace Projeto_API.Repository
             _context = context;
         }
 
-        public void Cadastrar(Pedido pedido)
+        public Pedido Cadastrar(Pedido pedido)
         {
             _context.Pedidos.Add(pedido);
             _context.SaveChanges();
+            return pedido;
         }
 
         public Pedido ObterPorId(int id)
         {
-            var pedido = _context.Pedidos.Find(id);
+            var pedido = _context.Pedidos.Include(x => x.Vendedor)
+                                         .Include(x => x.Cliente)
+                                         .FirstOrDefault(x => x.Id == id);
             return pedido;
         }
 
-        /* CUIDAR DISSO MAIS TARDE PELO 26:36
-        public List<CadastrarPedidoDTO> ObterPorVendedorId(int vendedorId)
+        public Pedido ObterPorVendedorId(int vendedorId)
         {
-            var pedidos = _context.Pedidos.Where(x => x.VendedorId.Contains(vendedorId))
-                                              .Select(x => new CadastrarPedidoDTO (x))
-                                              .ToList();
-            return pedidos;
+            var pedido = _context.Pedidos.Find(vendedorId);
+            return pedido;
         }
 
-        public List<ObterVendedorDTO> ObterPorClienteId(int clienteId)
+        public Pedido ObterPorClienteId(int clienteId)
         {
-            var pedidos = _context.Pedidos.Where(x => x.ClienteId.Contains(clienteId))
-                                              .Select(x => new CadastrarPedidoDTO (x))
-                                              .ToList();
-            return pedidos;
+            var pedido = _context.Pedidos.Find(clienteId);
+            return pedido;
         }
-        */ 
+
+        public Pedido AtualizarPedido(Pedido pedido)
+        {
+            _context.Pedidos.Update(pedido);
+            _context.SaveChanges();
+            return pedido;
+        }
+
+        public void DeletarPedido(Pedido pedido)
+        {
+            _context.Pedidos.Remove(pedido);
+            _context.SaveChanges();
+        }
     }
 }

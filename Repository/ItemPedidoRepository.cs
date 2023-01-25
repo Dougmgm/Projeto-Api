@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using Projeto_API.Context;
 using Projeto_API.Models;
 
@@ -23,9 +24,36 @@ namespace Projeto_API.Repository
 
         public ItemPedido ObterPorId(int id)
         {
-            var itemPedido = _context.ItemPedidos.Find(id);
+            var itemPedido = _context.ItemPedidos.Include(x => x.Pedido)
+                                                 .Include(x => x.Servico)
+                                                 .FirstOrDefault(x => x.Id == id);
             return itemPedido;
         }
 
+
+        public ItemPedido ObterPorPedidoId(int pedidoId)
+        {
+            var itemPedido = _context.ItemPedidos.Find(pedidoId);
+            return itemPedido;
+        }
+
+        public ItemPedido ObterPorServicoId(int servicoId)
+        {
+            var itemPedido = _context.ItemPedidos.Find(servicoId);
+            return itemPedido;
+        }
+
+        public ItemPedido AtualizarItemPedido(ItemPedido itemPedido)
+        {
+            _context.ItemPedidos.Update(itemPedido);
+            _context.SaveChanges();
+            return itemPedido;
+        }
+
+        public void DeletarItemPedido(ItemPedido itemPedido)
+        {
+            _context.ItemPedidos.Remove(itemPedido);
+            _context.SaveChanges();
+        }
     }
 }
