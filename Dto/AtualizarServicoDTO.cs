@@ -5,10 +5,8 @@ using System.Threading.Tasks;
 
 namespace Projeto_API.Dto
 {
-    public class CadastrarServicoDTO
+    public class AtualizarServicoDTO
     {
-       
-
         public string Nome { get; set; }
         public string Descricao { get; set; }
     }

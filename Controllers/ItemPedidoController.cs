@@ -37,5 +37,38 @@ namespace Projeto_API.Controllers
                 return NotFound(new {Mensagem = "Item do pedido não encontrado" });
             }
         }
+
+        [HttpPut("{id}")]
+        public IActionResult Atualizar(int id, AtualizarItemPedidoDTO dto)
+        {
+            var itemPedido = _repository.ObterPorId(id);
+
+            if (itemPedido is not null)
+            {
+                itemPedido.MapearAtualizarItemPedidoDTO(dto);
+                _repository.AtualizarItemPedido(itemPedido);
+                return Ok(itemPedido);
+            }
+            else 
+            {
+                return NotFound(new {Mensagem = "Item não encontrado" });
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Deletar(int id)
+        {
+            var itemPedido = _repository.ObterPorId(id);
+
+            if (itemPedido is not null)
+            {
+                _repository.DeletarItemPedido(itemPedido);
+                return NoContent();
+            }
+            else
+            {
+                return NotFound(new {Mensagem = "Item não encontrado" });
+            }
+        }
     }
 }

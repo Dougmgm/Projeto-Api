@@ -34,26 +34,68 @@ namespace Projeto_API.Controllers
             if(pedido is not null){
                 return Ok(pedido);
             } 
-            else {
+            else 
+            {
                 return NotFound(new {Mensagem = "Pedido não encontrado" });
             }
         }
 
 
-        /* //CUIDAR DISSO MAIS TARDE PELA REPOSITORY
         [HttpGet("ObterPorVendedorId/{vendedorId}")]
         public IActionResult ObterPorVendedorId(int vendedorId)
         {
-            var pedidos = _repository.ObterPorVendedorId(vendedorId);
-            return Ok(pedidos);
+            var pedido = _repository.ObterPorVendedorId(vendedorId);
+            if(pedido is not null){
+                return Ok(pedido);
+            } 
+            else {
+                return NotFound(new {Mensagem = "Vendedor não encontrado" });
+            }
         }
 
         [HttpGet("ObterPorClienteId/{clienteId}")]
         public IActionResult ObterPorClienteId(int clienteId)
         {
-            var pedidos = _repository.ObterPorClienteId(clienteId);
-            return Ok(pedidos);
+            var pedido = _repository.ObterPorClienteId(clienteId);
+            if(pedido is not null){
+                return Ok(pedido);
+            } 
+            else {
+                return NotFound(new {Mensagem = "Cliente não encontrado" });
+            }
         }
-        */
+
+        [HttpPut("{id}")]
+        public IActionResult Atualizar(int id, AtualizarPedidoDTO dto)
+        {
+            var pedido = _repository.ObterPorId(id);
+
+            if (pedido is not null)
+            {
+                pedido.MapearAtualizarPedidoDTO(dto);
+                _repository.AtualizarPedido(pedido);
+                return Ok(pedido);
+            }
+            else 
+            {
+                return NotFound(new {Mensagem = "Pedido não encontrado" });
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Deletar(int id)
+        {
+            var pedido = _repository.ObterPorId(id);
+
+            if (pedido is not null)
+            {
+                _repository.DeletarPedido(pedido);
+                return NoContent();
+            }
+            else
+            {
+                return NotFound(new {Mensagem = "Pedido não encontrado" });
+            }
+        }
     }
 }

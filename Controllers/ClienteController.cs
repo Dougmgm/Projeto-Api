@@ -52,5 +52,62 @@ namespace Projeto_API.Controllers
             var clientes = _repository.ObterPorLogin(login);
             return Ok(clientes);
         }
+
+        [HttpDelete("{id}")]
+        public IActionResult Deletar(int id)
+        {
+            var cliente = _repository.ObterPorId(id);
+
+            if (cliente is not null)
+            {
+                _repository.DeletarCliente(cliente);
+                return NoContent();
+            }
+            else
+            {
+                return NotFound(new {Mensagem = "Cliente não encontrado" });
+            }
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult Atualizar(int id, AtualizarClienteDTO dto)
+        {
+            var cliente = _repository.ObterPorId(id);
+
+            if (cliente is not null)
+            {
+                cliente.MapearAtualizarClienteDTO(dto);
+                _repository.AtualizarCliente(cliente);
+                return Ok(cliente);
+            }
+            else 
+            {
+                return NotFound(new {Mensagem = "Cliente não encontrado" });
+            }
+        }
+
+        [HttpPatch("{id}")]
+        public IActionResult AtualizarSenha(int id, AtualizarSenhaClienteDTO dto)
+        {
+            var cliente = _repository.ObterPorId(id);
+            if (cliente is not null)
+            {
+                _repository.AtualizarSenha(cliente, dto);
+                return Ok();
+            }
+            else
+            {
+                return NotFound(new {Mensagem = "Cliente não encontrado" });
+            }
+            
+            
+        }
+
+        /*[HttpGet("Listar")]
+        public IActionResult Listar()
+        {
+            var clientes = _repository.Listar();
+            return Ok(clientes);
+        }*/
     }
 }
