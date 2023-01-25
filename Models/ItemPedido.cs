@@ -28,5 +28,13 @@ namespace Projeto_API.Models
             Quantidade = dto.Quantidade;
             Valor = dto.Valor;
         }
+
+        public void MapearAtualizarItemPedidoDTO(AtualizarItemPedidoDTO dto)
+        {
+            PedidoId = dto.PedidoId;
+            ServicoId = dto.ServicoId;
+            Quantidade = dto.Quantidade;
+            Valor = dto.Valor;
+        }
     }
 }

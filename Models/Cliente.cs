@@ -24,5 +24,12 @@ namespace Projeto_API.Models
             Login = dto.Login;
             Senha = dto.Senha;
         }
+
+        public void MapearAtualizarClienteDTO(AtualizarClienteDTO dto)
+        {
+            Nome = dto.Nome;
+            Login = dto.Login;
+            Senha = dto.Senha;
+        }
     }
 }
