@@ -14,7 +14,7 @@ namespace Projeto_API.Models
         public Vendedor Vendedor { get; set; }
         public int ClienteId { get; set; }
         public Cliente Cliente { get; set; }
-        public float ValorTotal { get; set; }
+        //public float ValorTotal { get; set; }
        
         public Pedido()
         {
@@ -26,7 +26,7 @@ namespace Projeto_API.Models
             Date = dto.Date;
             VendedorId = dto.VendedorId;
             ClienteId = dto.ClienteId;
-            ValorTotal = dto.ValorTotal;
+            //ValorTotal = dto.ValorTotal;
         }
 
         public void MapearAtualizarPedidoDTO(AtualizarPedidoDTO dto)
@@ -34,7 +34,7 @@ namespace Projeto_API.Models
             Date = dto.Date;
             VendedorId = dto.VendedorId;
             ClienteId = dto.ClienteId;
-            ValorTotal = dto.ValorTotal;
+           // ValorTotal = dto.ValorTotal;
         }
         
     }
