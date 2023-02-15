@@ -36,13 +36,6 @@ namespace Projeto_API.Repository
             return vendedor;
         }
 
-       /* public List<ObterVendedorDTO> ObterLista(int id)
-        {
-            var vendedor = ObterLista().ToList(vendedor)
-            return vendedor;
-        }*/
-
-
         public List<ObterVendedorDTO> ObterPorLogin(string login)
         {
             var vendedor = _context.Vendedores.Where(x => x.Login.Contains(login))
@@ -68,6 +61,11 @@ namespace Projeto_API.Repository
         {
             vendedor.Senha = dto.Senha;
             AtualizarVendedor(vendedor);
+        }
+
+        public List<Vendedor> Listar()
+        {
+            return _context.Vendedores.ToList();
         }
     }
 }

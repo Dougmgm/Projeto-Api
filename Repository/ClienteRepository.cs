@@ -63,9 +63,9 @@ namespace Projeto_API.Repository
             AtualizarCliente(cliente);
         }
 
-        /*public Cliente Listar(){
-            List<string> lista = new List<string>();
-            return lista
-        }*/
+        public List<Cliente> Listar()
+        {
+            return _context.Clientes.ToList();
+        }
     }
 }

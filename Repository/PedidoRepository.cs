@@ -56,5 +56,10 @@ namespace Projeto_API.Repository
             _context.Pedidos.Remove(pedido);
             _context.SaveChanges();
         }
+        public List<Pedido> Listar()
+        {
+            return _context.Pedidos.ToList();
+        }
     }
 }
+

@@ -101,6 +101,11 @@ namespace Projeto_API.Controllers
             }
         }
 
-        
+        [HttpGet("Listar")]
+        public IActionResult Listar()
+        {
+            var vendedors = _repository.Listar();
+            return Ok(vendedors);
+        }
     }
 }

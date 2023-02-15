@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Projeto_API.Context;
+using Projeto_API.Dto;
 using Projeto_API.Models;
 
 namespace Projeto_API.Repository
@@ -31,9 +32,11 @@ namespace Projeto_API.Repository
         }
 
 
-        public ItemPedido ObterPorPedidoId(int pedidoId)
+        public List <ObterItemPedidoDTO> ObterPorPedidoId(int pedidoId)
         {
-            var itemPedido = _context.ItemPedidos.Find(pedidoId);
+            var itemPedido = _context.ItemPedidos.Where(x => x.PedidoId == pedidoId)
+                                                .Select(x => new ObterItemPedidoDTO(x))
+                                                .ToList();
             return itemPedido;
         }
 
@@ -54,6 +57,11 @@ namespace Projeto_API.Repository
         {
             _context.ItemPedidos.Remove(itemPedido);
             _context.SaveChanges();
+        }
+
+        public List<ItemPedido> Listar()
+        {
+            return _context.ItemPedidos.ToList();
         }
     }
 }

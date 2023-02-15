@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "iDYJIFxFHRxuuUmhes0JpzHdue/G/1ArNQh5/9GjmAqpq1YviHBQ8CMgw3jqiFvqPz6nazEiii00aTDjUf/+9g==",
+  "dgSpecHash": "nfiUvD+dPa8ofTQeDXRd55t3LY341obIvDbbV/rAx4DhsRYAYRE/V8f1pqiwwdydYv1UwOCGB8G7uLdIzixZrg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\douglas.menchon\\Desktop\\VueJs\\API\\Projeto API.csproj",
+  "projectFilePath": "C:\\Users\\douglas.menchon\\Desktop\\VueJs T.I. Academy\\ProjetoAPI\\Projeto API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\douglas.menchon\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\douglas.menchon\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

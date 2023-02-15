@@ -55,6 +55,18 @@ namespace Projeto_API.Controllers
             }
         }
 
+        [HttpGet("ObterPorPedidoId/{pedidoId}")]
+        public IActionResult ObterPorPedidoId(int pedidoId)
+        {
+            var itemPedido = _repository.ObterPorPedidoId(pedidoId);
+            if(itemPedido is not null){
+                return Ok(itemPedido);
+            } 
+            else {
+                return NotFound(new {Mensagem = "Pedido não encontrado" });
+            }
+        }
+
         [HttpDelete("{id}")]
         public IActionResult Deletar(int id)
         {
@@ -69,6 +81,13 @@ namespace Projeto_API.Controllers
             {
                 return NotFound(new {Mensagem = "Item não encontrado" });
             }
+        }
+
+        [HttpGet("Listar")]
+        public IActionResult Listar()
+        {
+            var itemPedidos = _repository.Listar();
+            return Ok(itemPedidos);
         }
     }
 }

@@ -103,11 +103,11 @@ namespace Projeto_API.Controllers
             
         }
 
-        /*[HttpGet("Listar")]
+        [HttpGet("Listar")]
         public IActionResult Listar()
         {
             var clientes = _repository.Listar();
             return Ok(clientes);
-        }*/
+        }
     }
 }

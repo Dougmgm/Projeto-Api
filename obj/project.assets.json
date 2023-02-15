@@ -3878,11 +3878,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\douglas.menchon\\Desktop\\VueJs\\API\\Projeto API.csproj",
+      "projectUniqueName": "C:\\Users\\douglas.menchon\\Desktop\\VueJs T.I. Academy\\ProjetoAPI\\Projeto API.csproj",
       "projectName": "Projeto API",
-      "projectPath": "C:\\Users\\douglas.menchon\\Desktop\\VueJs\\API\\Projeto API.csproj",
+      "projectPath": "C:\\Users\\douglas.menchon\\Desktop\\VueJs T.I. Academy\\ProjetoAPI\\Projeto API.csproj",
       "packagesPath": "C:\\Users\\douglas.menchon\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\douglas.menchon\\Desktop\\VueJs\\API\\obj\\",
+      "outputPath": "C:\\Users\\douglas.menchon\\Desktop\\VueJs T.I. Academy\\ProjetoAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\douglas.menchon\\AppData\\Roaming\\NuGet\\NuGet.Config",
